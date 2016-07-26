@@ -38,4 +38,12 @@ defmodule BankAccount do
     Agent.update(account, fn(_state) -> new end)
   end
 
+  @doc """
+  close_bank is a simple server stop. Passing the agent pid is the only requirement
+  There's no need to check the result as it'll show the reason instead of replying with :ok and log the reason!
+  """
+  def close_bank(account) do
+    Agent.stop(account)
+  end
+
 end
